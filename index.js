@@ -1,8 +1,10 @@
-console.log("Good Luck");
-
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./utils/generateHTML');
+
+const questions = [
+
+];
 
 function writeToFile(fileName, data){
 	fs.writeFile(fileName, generateHTML(data), function(error){
