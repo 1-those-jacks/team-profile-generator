@@ -2,10 +2,32 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./dist/generateHTML');
 
-
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
 
 const questions = [
-
+	{
+		type: "input",
+		name: "name",
+		message: "What is their name?",
+	},
+	{
+		type: "input",
+		name: "id",
+		message: "What is their ID?",
+	},
+	{
+		type: "input",
+		name: "email",
+		message: "What is their email?",
+	},
+	{
+		type: "list",
+		name: "role",
+		message: "What is their role?",
+		choices: ["Manager", "Engineer", "Intern"],
+	},
 ];
 
 function writeToFile(fileName, data){
@@ -23,6 +45,7 @@ function init() {
 		.then(data => {
 			writeToFile("orgChart.html", data);
 		});
+
 }
 
 init();
