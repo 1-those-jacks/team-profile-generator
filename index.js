@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHTML = require('./dist/generateHTML');
+const generateHTML = require('./dist/generateHTML.js');
 
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
@@ -97,22 +97,9 @@ async function init() {
 	} return writeToFile();
 }
 
-function writeToFile(fileName, data){
-	fs.writeFile(fileName, generateHTML(data), function(error){
-		if(error) {
-			console.log("Could not write file.");
-		} else {
-			console.log("Success, new file created.")
-		}
-	})
+function writeToFile(){
+	// console.log(teamData);
+	fs.writeFileSync("orgChart.html", generateHTML(teamData), 'utf-8')
 }
-
-// function init() {
-// 	return inquirer.prompt(questions)
-// 		.then(data => {
-// 			writeToFile("orgChart.html", data);
-// 		});
-
-// }
 
 init();
